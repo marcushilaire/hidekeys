@@ -23,7 +23,7 @@ app.get("/", function(req, res) {
 });
 app.get("/apiKey", function(req, res) {
   console.log("api key requested");
-  res.send(apiKey);
+  res.status(200).send(apiKey);
 });
 // console.log(apiKey); // 1234
 // console.log(appID); //5678
