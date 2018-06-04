@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GIPHY</title>
-    <link rel="stylesheet" type="text/css" href="./assets/style/reset.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./assets/style/style.css">
+    <link rel="stylesheet" type="text/css" href="./style/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
 
 </head>
+
 <body>
-<div class="container">
-    <div class="row">
-        <div class="page-header">
-            <h1 id="head">Gifs Galore <small id="subHead"> Powered by GIPHY</small></h1>
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1 id="head">Gifs Galore
+                    <small id="subHead"> Powered by GIPHY</small>
+                </h1>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div id="buttonsDiv" class="col-xs-12 col-md-6"></div>
-        <div class="col-xs-12 col-md-6">
-        <form id="movie-form">
-            <input type="text" id="inputQuery" placeholder="Find Gifs!" class="form-control">
-            <input id="addQuery" type="submit" class="btn btn-primary" value="Add a new Button">
-        </form>
+        <div class="row">
+            <div id="buttonsDiv" class="col-xs-12 col-md-6"></div>
+            <div class="col-xs-12 col-md-6">
+                <form id="movie-form">
+                    <input type="text" id="inputQuery" placeholder="Find Gifs!" class="form-control">
+                    <input id="addQuery" type="submit" class="btn btn-primary" value="Add a new Button">
+                </form>
+            </div>
+
         </div>
-        
+        <div id="imgDump" class="row"></div>
     </div>
-    <div id="imgDump" class="row"></div>
-</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="./assets/logic/logic.js"></script>
+    <script src="./logic/logic.js"></script>
 </body>
+
 </html>
