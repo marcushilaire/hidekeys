@@ -1,6 +1,7 @@
 var apiKey;
+
+//A get request at /apiKeyk to retrieve the key from the server
 var fetchKey = function() {
-  // var apiKey = "";
   $.ajax({
     url: "/apiKey",
     method: "GET"
@@ -8,7 +9,7 @@ var fetchKey = function() {
     apiKey = data;
   });
 };
-fetchKey();
+
 var searchTerms = [
   "Greys Anatomy",
   "My Hero Academia",
@@ -23,8 +24,10 @@ var searchTerms = [
   "Puppies",
   "Pygmy Goats"
 ];
+
 var buttonGenerate = function() {
   $("#buttonsDiv").empty();
+
   for (var i = 0; i < searchTerms.length; i++) {
     var button = $("<button>")
       .text(searchTerms[i])
@@ -32,12 +35,14 @@ var buttonGenerate = function() {
         class: "terms btn",
         "data-term": searchTerms[i]
       });
+
     $("#buttonsDiv").append(button);
   }
 };
 
 $(document).ready(function() {
-  // console.log("outside", apiKey);
+  fetchKey();
+
   buttonGenerate();
 
   $("#addQuery").on("click", function(event) {
@@ -52,10 +57,10 @@ $(document).ready(function() {
   $(document).on("click", ".terms", function() {
     $("#imgDump").empty();
     var term = $(this).attr("data-term");
-    var queryURL =
-      "https://api.giphy.com/v1/gifs/search?q=" +
-      term +
-      `&api_key=${apiKey}&limit=10`;
+
+    var queryURL = `https://api.giphy.com/v1/gifs/search?q=${term}
+      &api_key=${apiKey}&limit=10`;
+
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -71,7 +76,9 @@ $(document).ready(function() {
           "data-active": imageSet[i].images.fixed_height.url,
           "data-state": "still"
         });
+
         div.append(rating, img).attr("class", "gifDiv");
+
         $("#imgDump").append(div);
       }
     });
@@ -81,6 +88,7 @@ $(document).ready(function() {
     var state = $(this).attr("data-state");
     var pause = $(this).attr("data-still");
     var play = $(this).attr("data-active");
+
     if (state == "still") {
       $(this).attr("src", play);
       $(this).attr("data-state", "active");

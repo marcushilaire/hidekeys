@@ -1,32 +1,36 @@
+// Requiring our npm packages
 require("dotenv").config();
 var fs = require("fs");
-var keys = require("./keys.js");
 var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
 var fs = require("fs");
-var app = express();
-// importing the API object from keys.js
-var PORT = process.env.PORT || 8080;
-
+//Requiring the api object from keys.js
+var keys = require("./keys.js");
 var apiKey = keys.API.apiKey;
-// var appID = keys.API.appID;
+
+// Initializing Express
+var app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Setting up our server to run on the port defined by our deployment host or  localhost:8080
+var PORT = process.env.PORT || 8080;
+
+// Setting up a get route at home route to display index.html
 app.get("/", function(req, res) {
-  //   res.send(apiKey);
-  console.log("loading home");
+  console.log("loading home, index.html");
   res.sendFile(path.join(__dirname, "./index.html"));
-  console.log(__dirname);
 });
+
+// Setting up a route to send apiKey from the server to the client
 app.get("/apiKey", function(req, res) {
   console.log("api key requested");
   res.status(200).send(apiKey);
 });
-// console.log(apiKey); // 1234
-// console.log(appID); //5678
+
+// Starting the server on the previously define PORT
 app.listen(PORT, function() {
-  console.log("Server Running");
+  console.log("Server running on port:", PORT);
 });
