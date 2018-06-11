@@ -16,7 +16,7 @@ Any code referencing `process.env.<variableName>`, [keys.js](keys.js) for exampl
 
 ### [Server Side](server.js)
 
-Set up a route on the server where the client can request an api key.
+Set up a route on the server where the client can request a variable:
 
 ```js
 app.get("/apiKey", function(req, res) {
@@ -27,7 +27,7 @@ app.get("/apiKey", function(req, res) {
 
 ### [Client Side](./public/logic/logic.js)
 
-Set up a get request from the client to retrieve an api key.
+Set up a get request from the client to retrieve a variable:
 
 ```js
 var apiKey; //globally defined

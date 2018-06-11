@@ -4,11 +4,12 @@ var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
 var fs = require("fs");
+
 //Requiring the api object from keys.js
 var keys = require("./keys.js");
 var apiKey = keys.API.apiKey;
 
-// Initializing Express
+// Initializing Express and file structuer
 var app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,7 +21,7 @@ var PORT = process.env.PORT || 8080;
 // Setting up a get route at home route to display index.html
 app.get("/", function(req, res) {
   console.log("loading home, index.html");
-  res.sendFile(path.join(__dirname, "./index.html"));
+  res.sendFile(path.join(__dirname, "/index.html"));
 });
 
 // Setting up a route to send apiKey from the server to the client
