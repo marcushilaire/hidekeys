@@ -1,6 +1,5 @@
 // Requiring our npm packages
 require("dotenv").config();
-var fs = require("fs");
 var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");

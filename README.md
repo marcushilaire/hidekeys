@@ -27,7 +27,7 @@ app.get("/apiKey", function(req, res) {
 
 ### [Client Side](./public/logic/logic.js)
 
-Set up a get request from teh client to retrieve an api key.
+Set up a get request from the client to retrieve an api key.
 
 ```js
 var apiKey; //globally defined
