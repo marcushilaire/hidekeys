@@ -14,4 +14,30 @@ Any code referencing `process.env.<variableName>`, [keys.js](keys.js) for exampl
 
 ## Sending variables from the server to the client
 
-Seting up up a get route on the [server](server.js)
+### [Server Side](server.js)
+
+Set up a route on the server where the client can request an api key.
+
+```js
+app.get("/apiKey", function(req, res) {
+  console.log("api key requested");
+  res.status(200).send(apiKey);
+});
+```
+
+### [Client Side](./public/logic/logic.js)
+
+Set up a get request from teh client to retrieve an api key.
+
+```js
+var apiKey; //globally defined
+
+var fetchKey = function() {
+  $.ajax({
+    url: "/apiKey",
+    method: "GET"
+  }).then(function(data) {
+    apiKey = data;
+  });
+};
+```
