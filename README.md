@@ -1,17 +1,43 @@
 # Keeping API keys private
 
-### Scaffolding
+### Initialization
 
 Run `npm init -y` to automatically set up the package json with default options.
 
 Run `npm i --s dotenv` to install dotenv and add it to dependencies in the [package.json](package.json). This package will allow us to manipulate environment variables in development that can be accessed in the form `process.env<variableName>`.
 
-set up the .env
+### [.gitignore](.gitignore) and [.env](.env)
 
-set up the gitignore
-this will keep the information defined explicitly in the .env off of github
+Create a [.gitignore](.gitignore) file. This will specify the files/folders that should not be tracked by git. It should look something like this:
 
-pull the information from the .env as process.env as done in [keys.js](keys.js)
+```
+node_modules
+.env
+.DS_Store
+```
+
+- Note: This branch of the tutorial is meant to show the .env so it is not included in the .gitignore
+
+Environment variables are defined in the .env with simple key value pairs in the form:
+
+```
+key = 1234
+appID = 5678
+```
+
+### Accessing the environment variables
+
+The environment variables can be referenced through the `process.env` object. for example:
+
+```js
+var apiKey = process.env.key;
+var apiID = process.env.appID;
+
+console.log(apiKey); //1234
+console.log(apiID); //5678
+```
+
+[keys.js](keys.js)
 export from keys.js
 
 reqire dotenv and fs
