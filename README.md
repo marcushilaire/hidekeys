@@ -1,8 +1,10 @@
 # Hiding API Keys in deployment
 
-## Setting up configuration variables on Heroku
+For this tutorial I built upon a [small front end application](https://github.com/marcushilaire/giphy) buy giving it a basic back end structure so it could be used as an an appropriate example.
 
-#### Access the settings page from heroku.
+## Configuration Variables on Heroku
+
+#### Access the settings page from Heroku.
 
 ![](./instructionalImages/HerokuA.png)
 
@@ -10,7 +12,7 @@
 
 ![](./instructionalImages/HerokuB.png)
 
-#### Settomg the configuration variables
+#### Setting the configuration variables
 
 ![](./instructionalImages/HerokuC.png)
 Define the configuration variable key value pairs as shown above.
