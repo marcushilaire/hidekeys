@@ -1,12 +1,39 @@
-var apiKey;
-
 //A get request at /apiKeyk to retrieve the key from the server
 var fetchKey = function() {
-  $.ajax({
-    url: "/apiKey",
-    method: "GET"
-  }).then(function(data) {
-    apiKey = data;
+  return $.ajax({ url: "/apiKey", method: "GET" });
+};
+
+var callGiphy = function() {
+  // var apiKey;
+  var term = $(this).attr("data-term");
+  fetchKey().then(function(apiKey) {
+    // console.log(apiKey);
+    $("#imgDump").empty();
+
+    var queryURL = `https://api.giphy.com/v1/gifs/search?q=${term}
+    &api_key=${apiKey}&limit=10`;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      var imageSet = response.data;
+      for (var i = 0; i < imageSet.length; i++) {
+        var div = $("<div>");
+        var rating = $("<p>").text("This gif is rated: " + imageSet[i].rating);
+        var img = $("<img>").attr({
+          src: imageSet[i].images.fixed_height_still.url,
+          class: "gifs img-responsive",
+          "data-still": imageSet[i].images.fixed_height_still.url,
+          "data-active": imageSet[i].images.fixed_height.url,
+          "data-state": "still"
+        });
+
+        div.append(rating, img).attr("class", "gifDiv");
+
+        $("#imgDump").append(div);
+      }
+    });
   });
 };
 
@@ -54,35 +81,7 @@ $(document).ready(function() {
     }
   });
 
-  $(document).on("click", ".terms", function() {
-    $("#imgDump").empty();
-    var term = $(this).attr("data-term");
-
-    var queryURL = `https://api.giphy.com/v1/gifs/search?q=${term}
-      &api_key=${apiKey}&limit=10`;
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      var imageSet = response.data;
-      for (var i = 0; i < imageSet.length; i++) {
-        var div = $("<div>");
-        var rating = $("<p>").text("This gif is rated: " + imageSet[i].rating);
-        var img = $("<img>").attr({
-          src: imageSet[i].images.fixed_height_still.url,
-          class: "gifs img-responsive",
-          "data-still": imageSet[i].images.fixed_height_still.url,
-          "data-active": imageSet[i].images.fixed_height.url,
-          "data-state": "still"
-        });
-
-        div.append(rating, img).attr("class", "gifDiv");
-
-        $("#imgDump").append(div);
-      }
-    });
-  });
+  $(document).on("click", ".terms", callGiphy);
 
   $(document).on("click", ".gifs", function() {
     var state = $(this).attr("data-state");
