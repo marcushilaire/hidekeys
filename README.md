@@ -36,14 +36,14 @@ app.get("/apiKey", function(req, res) {
 Set up a get request from the client to retrieve a variable:
 
 ```js
-var apiKey; //globally defined
-
 var fetchKey = function() {
-  $.ajax({
-    url: "/apiKey",
-    method: "GET"
-  }).then(function(data) {
-    apiKey = data;
+  return $.ajax({ url: "/apiKey", method: "GET" });
+};
+
+var useKey = function() {
+  fetchKey().then(function(apiKey) {
+    console.log(apiKey);
+    // Do things...
   });
 };
 ```
