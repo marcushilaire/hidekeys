@@ -1,6 +1,6 @@
 //A get request at /apiKeyk to retrieve the key from the server
 var fetchKey = function() {
-  return $.ajax({ url: "/apiKey", method: "GET" });
+  return $.ajax({ url: "/apiKey", method: "POST" });
 };
 
 var callGiphy = function() {

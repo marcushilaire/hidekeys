@@ -25,9 +25,10 @@ app.get("/", function(req, res) {
 });
 
 // Setting up a route to send apiKey from the server to the client
-app.get("/apiKey", function(req, res) {
+app.post("/apiKey", function(req, res) {
   console.log("api key requested");
   res.status(200).send(apiKey);
+  // .redirect("/");
 });
 
 // Starting the server on the previously define PORT
