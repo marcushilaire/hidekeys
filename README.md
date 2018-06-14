@@ -1,6 +1,11 @@
 # Hiding API Keys in deployment
 
-For this tutorial I built upon a [small front end application](https://github.com/marcushilaire/giphy) buy giving it a basic back end structure so it could be used as an an appropriate example.
+For this tutorial I built upon a [small front end application](https://github.com/marcushilaire/giphy) by giving it a basic back end structure so it could be used as an an appropriate example.
+
+Written with:
+
+- [Express](https://www.npmjs.com/package/express)
+- [dotenv](https://www.npmjs.com/package/dotenv)
 
 ## Configuration Variables on Heroku
 
